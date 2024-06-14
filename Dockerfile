@@ -7,10 +7,13 @@ RUN apt-get install -y iputils-ping
 RUN apt-get upgrade -y
 RUN apt-get install -y nodejs
 
+WORKDIR /app
+
 COPY package.json package.json
 COPY package-lock.json package-lock.json
 RUN npm install
-COPY main.js main.js
 
+
+COPY . . 
 
 ENTRYPOINT ["node","main.js"]
